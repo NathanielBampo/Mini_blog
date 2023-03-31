@@ -1,22 +1,55 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
+<div class="row">
+  <div class="col-12">
+    <div id="<%= dom_id article %>">
 
-  <p>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </p>
+      <div class="bg-warning">
+        <strong>Title:</strong>
+        <%= link_to article.title, article_path(article.id) %>
+      </div>
 
-  <p>
-    <strong>Author:</strong>
-    <%= article.author %>
-  </p>
+      <div class="bg-light">
+        <p class="px-4 pt-3">
+          <%= article.body %><hr>
 
-  <p>
-    <strong>Datetime:</strong>
-    <%= article.datetime %>
-  </p>
+          <div class="container">
+            <div class="row">
+              <div class="col-2 bg-light pt-2">
+                <strong>Author:</strong>
+                <% if article.user.present? %>
+                  <%= link_to article.author, user_path(article.user_id) %>
+                <% else %>
+                  <%= article.author %>
+                <% end %>
+              </div>
 
+              <div class="col-3 bg-light pt-2">
+                <strong>Datetime:</strong>
+                <%= article.datetime %>
+              </div>
+
+              <div class="col-6"></div>
+              <% if article.present? %>
+                <% if logged_in? && current_user.id == article.user_id %>
+
+                  <div class="col-1 bg-light pt-2">
+                    <div class="float-end">
+                      <%= link_to "", edit_article_path(article), class: "bi bi-pencil text-dark" %>
+                      <%= link_to "", article, data: { turbo: true, turbo_method: :delete, turbo_confirm: 'are_you_sure?' },  class: "bi bi-trash3 text-danger" %>
+                    </div>
+                  </div>
+                </div>
+                <!--row-->
+              </div>
+
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+      <!--bg-light-->
+
+    </div>
+    <!--dom_id-->
+  </div>
+  <!--col-12-->
 </div>
+<!--row-->
