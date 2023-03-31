@@ -1,0 +1,24 @@
+<%= provide(:title, 'Log in') %>
+
+<%= form_for(:session, url: login_path) do |form| %>
+
+<div class="text-center">
+  <div>
+    <%= form.label :nick, style: "display: block" %>
+    <%= form.text_field :nick %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit 'log in', class: 'mt-1' %>
+  </div>
+
+  <div>
+    <%= link_to "Back", root_path %>
+  </div>
+<% end %>
+</div>
