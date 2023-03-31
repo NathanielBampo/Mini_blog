@@ -11,7 +11,6 @@ gem "jsbundling-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
-gem "jbuilder"
 gem "redis", ">= 4.0.1"
 gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -19,6 +18,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 group :development do
+  gem "debug", ">= 1.0.0"
   gem "web-console"
   gem "rack-mini-profiler"
   gem "spring"

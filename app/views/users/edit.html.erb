@@ -1,0 +1,12 @@
+<%= provide(:title, 'Edit') %>
+
+<h1>Edit</h1>
+
+<div>
+  <%= render 'form', user: @user %>
+</div>
+
+<div>
+  <%= link_to "Show this user", @user %> |
+  <%= link_to "Back to all message", users_path %>
+</div>
