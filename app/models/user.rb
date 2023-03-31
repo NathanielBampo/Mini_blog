@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :articles
 
   after_commit :link_author, on: :create

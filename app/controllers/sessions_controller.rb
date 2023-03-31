@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase, nick: params[:session][:nick])
+    user = User.find_by(email: params[:session][:email].downcase)
 
-    if user.present? # test equal password
+    if user && user.authenticate(params[:session][:password]) # test equal password
       log_in(user)
       
       # User input and render profile user
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to user
     else
       # render :new # render form_field new session and print error
-      flash.now[:danger] = 'Invalide email or nick combination'
+      flash.now[:danger] = 'Invalide email or password combination'
       render :new
     end
   end
